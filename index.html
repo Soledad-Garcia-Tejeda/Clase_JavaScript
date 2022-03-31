@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="En SANITAR - Repuestos Sanitarios tenemos una amplia variedad de productos sanitarios. Consulta cada una de nuestras categorías y suscríbete para recibir nuestro catálogo actualizado.">
+    <meta name="keywords" content="SANITAR, SANITARIOS, REPUESTOS SANITARIOS, REPUESTOS SANITARIOS BUENOS AIRES, ARTÍCULOS SANITARIOS, ARTÍCULOS SANITARIOS BUENOS AIRES, PROVEEDORES DE ARTÍCULOS SANITARIOS, MAYORISTA DE ARTÍCULOS SANITARIOS, PROVEEDORES DE REPUESTOS SANITARIOS, MAYORISTA DE REPUESTOS SANITARIOS, PRODUCTOS SANITARIOS, CATEGORÍAS REPUESTOS SANITARIOS">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>SANITAR - Repuestos Sanitarios - Productos</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <header class="container-fluid bg-white sticky-top">
+
+      <!-- Barra Negra -->
+      <div class="row header__barra">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 p-0 d-flex justify-content-start align-items-center">
+          <a class="btn header__btn--logoW" href="https://wa.me/541132571917?" target="blank" role="button"></a>
+          <img src="imagenes/icon-telefono.png" class="img-fluid header__iconos d-none d-sm-none d-md-flex" alt="icon-telefono">
+          <p class="header__p--claro d-none d-sm-none d-md-flex">11-3257-1917 / 4709-6845</p>
+          <img src="imagenes/icon-mail.png" class="img-fluid header__iconos" alt="icon-mail">
+          <p class="header__p--claro">distribuidorasanitar@gmail.com</p>
+        </div>
+        <div class="col-lg-6 d-md-none d-lg-flex d-none p-0 d-flex justify-content-end align-items-center">
+          <img src="imagenes/icon-ubicacion.png" class="img-fluid header__iconos" alt="icon-ubicacion">
+          <a class="header__p--claro header__p--claro2" target="_blank"href="https://goo.gl/maps/WtFJexNLCH8vQH6L6">Villa Martelli, Buenos Aires</a>
+        </div>
+      </div>
+
+      <!-- Logo -->
+      <div class="row">
+        <div class="col-md-12 bg-white text-center p-0">
+          <a href="#"><img class="header__logoIndex img-fluid" src="imagenes/1-logo.jpg" alt="logo-sanitar"></a>
+        </div>
+      </div>  
+
+      <!-- Nav --> 
+      <div class="row">
+        <!-- Nav lg-->
+        <div class="col-md-12 p-0">
+          <nav class="navbar-expand-lg bg-white d-none d-md-none d-lg-block">
+            <ul class="navbar-nav d-flex justify-content-evenly mt-2">
+              <li class="nav-item">
+                <a class="nav-link header__nav" aria-current="page" href="#">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  header__nav header__nav--activo" href="#">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link header__nav " href="#">Quiénes Somos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link header__nav " href="#">Contacto</a>
+              </li>
+            </ul>                      
+          </nav>
+        </div>
+        <!-- Nav md -->
+        <div class="col-sm-12 col-xs-12 d-block d-md-block d-lg-none p-0">  
+          <nav class="navbar navbar-light bg-white">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <a href="#"><img class="header__logoIndex2 img-fluid" src="imagenes/1-logo.jpg" alt="logo-sanitar"></a>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                      <a class="nav-link header__nav" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link header__nav header__nav--activo" href="#">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link header__nav" href="#">Quiénes Somos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link header__nav" href="#">Contacto</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Galería Catálogo de Productos -->
+    <main class="mainProductos">
+      <hr>
+      <h1 class="mainProductos__titulo">Nuestros productos</h1>
+      <div class="mainProductos__div_categoria">
+
+        <!-- Categoría 1 -->
+        <a style="cursor:pointer" onclick='unidadesAbrazadera()' class="mainProductos__div_categoria-1">
+          <div class="mainProductos__div_categoria--desaparecer">
+            <p class="mainProductos__p">ABRAZADERAS</p>
+          </div>    
+        </a>
+
+        <!-- Categoría 2 -->
+        <a style="cursor:pointer" onclick='unidadesAgua()' class="mainProductos__div_categoria-2">
+          <div class="mainProductos__div_categoria--desaparecer">
+            <p class="mainProductos__p">ACCESORIOS EN BRONCE FUNDIDO ROSCADO</p>
+          </div>        
+        </a>
+
+      <button style="cursor:pointer" class="botontotal" onclick='total()'> PRESIONE AQUI PARA CONOCER EL TOTAL DE SU COMPRA </button>
+        
+      </div>
+    </main>
+
+    <footer>
+      <!-- Nav -->
+      <div class="footer__nav--margen d-none d-md-none d-lg-block">
+        <h6>Navegación:</h6>
+        <ul class="footer__nav-ul">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#" class="footer__nav--activo">Productos</a></li>
+            <li><a href="#">Quiénes Somos</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div class="footer__contacto">
+        <h6>Contacto:</h6>
+        <div>
+          <img src="imagenes/icon-ubicacion.png" class="img-fluid footer__iconos" alt="icon-ubicacion">
+          <a class="footer__p--claro footer__p--claro2" target="_blank"href="https://goo.gl/maps/WtFJexNLCH8vQH6L6">Villa Martelli, Buenos Aires</a>
+        </div>
+        <div>
+          <img src="imagenes/icon-telefono.png" class="img-fluid footer__iconos" alt="icon-telefono">
+          <p class="footer__p--claro">11-3257-1917 / 4709-6845</p>
+        </div>
+        <div>
+          <img src="imagenes/icon-mail.png" class="img-fluid footer__iconos" alt="icon-mail">
+          <p class="footer__p--claro">distribuidorasanitar@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Logo Whatsapp -->
+      <div class="footer__logo-whatsapp">
+        <a target="_blank" href="https://wa.me/541132571917?"><img src="imagenes/icon-whatsapp.png" class="footer__logoWhatsapp" alt="logo-whatsApp"></a>
+      </div>
+    </footer>
+   
+    
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

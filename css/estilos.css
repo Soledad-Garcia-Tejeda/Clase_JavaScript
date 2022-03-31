@@ -1,0 +1,474 @@
+/*Header*/
+.header__barra {
+  height: 30px;
+  background-color: black; }
+
+/* Main */
+main {
+  height: 150vh; }
+
+/* Productos*/
+.mainProductos {
+  height: auto;
+  display: flex;
+  flex-direction: column; }
+
+/*Footer*/
+footer {
+  background-color: #191919;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+  footer div {
+    margin-top: 10px; }
+    footer div ul {
+      padding-left: 0; }
+      footer div ul li {
+        padding-top: 0;
+        margin-top: 0;
+        padding-left: 0; }
+
+.footer__nav--margen {
+  margin-left: 20px; }
+
+.footer__nav-ul {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: flex-end;
+  line-height: 1.5; }
+
+.footer__contacto {
+  justify-self: center;
+  margin-left: 15px; }
+
+.footer__logo-whatsapp {
+  margin-top: 80px;
+  margin-bottom: 20px;
+  margin-right: 20px; }
+
+/*Para todo el sitio*/
+h1 {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: bold; }
+
+h2 {
+  color: #c8c8c8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: bold; }
+
+h5 {
+  color: #259cbe;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold; }
+
+h6 {
+  color: #c8c8c8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold; }
+
+/*Header*/
+.header__p--claro {
+  text-decoration: none;
+  display: inline-block;
+  color: #c8c8c8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  margin-right: 20px;
+  margin-left: 5px; }
+
+.header__p--claro2 {
+  transition-property: color 2s; }
+
+.header__p--claro2:hover {
+  color: #259cbe; }
+
+.header__nav {
+  text-decoration: none;
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: uppercase;
+  transition-property: color 2s, font-weight 2s; }
+
+.header__nav:hover {
+  color: #259cbe;
+  font-weight: bolder; }
+
+.header__nav--activo {
+  font-weight: bolder; }
+
+/* Productos_Main */
+a {
+  text-decoration: none; }
+
+.mainProductos__p {
+  width: 90%;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  display: inline;
+  transition: display 2s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none; }
+
+.mainProductos__titulo {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 30px;
+  text-align: center; }
+
+/* Footer */
+.footer__p--claro {
+  text-decoration: none;
+  color: #c8c8c8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  display: inline-block;
+  margin: 0;
+  padding: 0; }
+
+.footer__p--claro2 {
+  transition-property: color 2s; }
+
+.footer__p--claro2:hover {
+  color: #259cbe; }
+
+ul li {
+  list-style-type: none; }
+  ul li a {
+    text-decoration: none;
+    color: #c8c8c8;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    transition-property: color 2s, font-weight 2s;
+    font-weight: normal;
+    text-transform: uppercase; }
+
+.footer__nav--activo {
+  font-weight: bolder; }
+
+ul li a:hover {
+  color: #259cbe;
+  font-weight: bolder; }
+
+/*Header*/
+.header__btn--logoW {
+  width: 30px;
+  height: 30px;
+  background-image: url(../imagenes/icon-whatsapp.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 10px; }
+
+.header__iconos {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px; }
+
+.header__logoIndex {
+  height: 110px;
+  animation-name: aparecer;
+  animation-duration: 3s;
+  animation-delay: 0s; }
+
+@keyframes aparecer {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.header__logoIndex2 {
+  height: 90px; }
+
+/* Productos_Main*/
+hr {
+  background-color: black;
+  color: black;
+  height: 12px;
+  width: 90%;
+  align-self: center; }
+
+.mainProductos__div_categoria {
+  width: 90%;
+  height: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-column-gap: 10px;
+  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+  grid-row-gap: 10px;
+  margin: auto;
+  padding: 40px 0;
+  overflow: hidden;
+  justify-items: center; }
+
+.mainProductos__div_categoria-1 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-1.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-2 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-2.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-3 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-3.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-4 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-4.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-5 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-5.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-6 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-6.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-7 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-7.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-8 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-8.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-9 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-9.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-10 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-10.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-11 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-11.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-12 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-12.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-13 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-13.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-14 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-14.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-15 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-15.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-16 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-16.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-17 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-17.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-18 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-18.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-19 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-19.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-20 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-20.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-21 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-21.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-22 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-22.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-23 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-23.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-24 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-24.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-25 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-25.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-26 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-26.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-27 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-27.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-28 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-28.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-29 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-29.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-30 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-30.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-31 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-31.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-32 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-32.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-33 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-33.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-34 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-34.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria-35 {
+  width: 200px;
+  height: 200px;
+  background-image: url(/imagenes/productos-35.png);
+  background-size: cover; }
+
+.mainProductos__div_categoria--desaparecer {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.75); }
+
+.mainProductos__div_categoria--desaparecer:hover {
+  display: none; }
+
+/*Footer*/
+.footer__iconos {
+  width: 20px;
+  height: 20px; }
+
+.footer__logoWhatsapp {
+  width: 50px;
+  height: 50px;
+  background-image: url(../imagenes/icon-whatsapp.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+  
+.botontotal{
+  width: 200px;
+  height: 100px;
+  background-color: rgb(80, 78, 78);
+  color: white;
+  font-size: 15px;
+  margin-top: 50px;
+   
+}

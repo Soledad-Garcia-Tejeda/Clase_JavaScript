@@ -1,0 +1,121 @@
+@import "colores";
+@import "estructura";
+@import "tipografia";
+
+/*Header*/
+
+.header__btn--logoW{
+    width: 30px;
+    height: 30px;
+    background-image: url(../imagenes/icon-whatsapp.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 10px;  
+}
+
+.header__iconos{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;  
+}
+
+
+.header__logoIndex{
+    height: 110px;
+    animation-name: aparecer;
+    animation-duration: 3s;
+    animation-delay: 0s;
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+    
+    100% {
+        opacity: 1;
+    }
+}
+
+.header__logoIndex2{
+    height: 90px;
+}
+
+
+/* Productos_Main*/
+
+hr{
+    background-color: black;
+    color: black;
+    height: 12px;
+    width: 90%;
+    align-self: center;
+}
+
+$ancho:200px;
+
+.mainProductos__div_categoria{
+    width: 90%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($ancho,1fr));
+    grid-column-gap: 10px;
+    grid-template-rows: repeat(auto-fit, minmax($ancho,1fr));
+    grid-row-gap: 10px;
+    margin: auto;
+    padding: 40px 0;
+    overflow: hidden;
+    justify-items: center;
+}
+
+
+$i2:1;
+@for $i2 from 1 through 35{
+    .mainProductos__div_categoria-#{$i2}{
+        width: $ancho;
+        height: $ancho;
+        background-image: url(/imagenes/productos-#{$i2}.png);
+        background-size: cover;
+    }
+}
+
+
+.mainProductos__div_categoria--desaparecer{
+    width: $ancho;
+    height: $ancho;
+    display: inline-block;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mainProductos__div_categoria--desaparecer:hover{
+    display: none;
+}
+
+
+/*Footer*/
+
+.footer__iconos{
+    width: 20px;
+    height: 20px; 
+}
+
+
+.footer__logoWhatsapp{
+    width: 50px;
+    height: 50px;
+    background-image: url(../imagenes/icon-whatsapp.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;  
+}
+
+

@@ -1,0 +1,71 @@
+/*Header*/
+
+.header__barra{
+    height: 30px;
+    background-color: black;
+
+}
+
+/* Main */
+
+main{
+    height: 150vh;
+}
+
+
+/* Productos*/
+
+.mainProductos{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/*Footer*/
+
+footer{
+    background-color: $color_background_footer;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    div{
+        margin-top: 10px;
+        ul{
+            padding-left: 0;
+            li{
+                padding-top: 0;
+                margin-top: 0;
+                padding-left: 0;
+            }
+        }
+    }
+}
+
+.footer__nav--margen{
+    margin-left: 20px;
+}
+
+.footer__nav-ul{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-end;
+    line-height: 1.5;
+}
+
+.footer__contacto{
+    justify-self: center;
+    margin-left: 15px;
+}
+
+
+.footer__logo-whatsapp{
+    margin-top: 80px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+    
