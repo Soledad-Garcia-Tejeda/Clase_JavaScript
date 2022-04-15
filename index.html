@@ -12,7 +12,6 @@
 
     <title>SANITAR - Repuestos Sanitarios - Productos</title>
     <link rel="stylesheet" href="css/estilos.css">
-    <script src="index.js"></script>
   </head>
   <body>
     <header class="container-fluid bg-white sticky-top">
@@ -85,7 +84,7 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link header__nav" href="#">Contacto</a>
-                    </li>
+                    </li>                    
                   </ul>
                 </div>
               </div>
@@ -101,30 +100,43 @@
       <h1 class="mainProductos__titulo">Nuestros productos</h1>
       <div class="mainProductos__div_categoria">
 
-        <!-- Categoría 1 -->
+        <!-- Producto 1 -->
         <a style="cursor:pointer"  onclick='fProducto1()' class="mainProductos__div_categoria-1">
           <div class="mainProductos__div_categoria--desaparecer">
-            <p class="mainProductos__p">ABRAZADERAS</p>
+            <p id="producto1" class="mainProductos__p"></p>
           </div>    
         </a>
 
-        <!-- Categoría 2 -->
+        <!-- Producto 2 -->
         <a style="cursor:pointer"  onclick='fProducto2()' class="mainProductos__div_categoria-2">
           <div class="mainProductos__div_categoria--desaparecer">
-            <p class="mainProductos__p">ACCESORIOS EN BRONCE FUNDIDO ROSCADO</p>
+            <p id="producto2" class="mainProductos__p"></p>
           </div>        
         </a>
 
-        <!-- Categoría 3 -->
+        <!-- Producto 3 -->
         <a style="cursor:pointer" onclick='fProducto3()' class="mainProductos__div_categoria-3">
           <div class="mainProductos__div_categoria--desaparecer">
-            <p class="mainProductos__p">ACCESORIOS EN BRONCE PARA GAS</p>
+            <p id="producto3" class="mainProductos__p"></p>
           </div>        
         </a>
 
-      <button style="cursor:pointer" class="botontotal" onclick='total()'> PRESIONE AQUI PARA CONOCER EL TOTAL DE SU COMPRA </button>
-        
+      <button style="cursor:pointer" class="botontotal" onclick='total()'> TOTAL </button>
+              </div>
+      <div id="carrito"></div>
+
+      <div>
+      <p class="form"> INGRESE SU CONTRASENA PARA ACCEDER A NUESTRO CATALOGO DE PRECIOS </P>  
+      <input class="botonForm" id="password">
+      <button class="botonForm"type="button" onclick="catPrecios()">Ingresar</button>
       </div>
+
+      <div id="catalogo" class="form">
+      <a href="LISTAC95.pdf" download target="_blank">Descargue el catalogo</a>
+
+      </div>
+
+
     </main>
 
     <footer>
@@ -136,6 +148,7 @@
             <li><a href="#" class="footer__nav--activo">Productos</a></li>
             <li><a href="#">Quiénes Somos</a></li>
             <li><a href="#">Contacto</a></li>
+            <li><a href="#">Catalogo de precios</a></li>
         </ul>
       </div>
 
@@ -163,8 +176,7 @@
     </footer>
    
     
-   
-
+    <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>
