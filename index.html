@@ -26,8 +26,92 @@
           <p class="header__p--claro">distribuidorasanitar@gmail.com</p>
         </div>
         <div class="col-lg-6 d-md-none d-lg-flex d-none p-0 d-flex justify-content-end align-items-center">
-          <img src="imagenes/icon-ubicacion.png" class="img-fluid header__iconos" alt="icon-ubicacion">
-          <a class="header__p--claro header__p--claro2" target="_blank"href="https://goo.gl/maps/WtFJexNLCH8vQH6L6">Villa Martelli, Buenos Aires</a>
+                        
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-secondary btn-sm header__btn--crearCuenta" data-bs-toggle="modal" data-bs-target="#modal1">Crear Cuenta</button>
+          <!-- Modal -->
+          <div class="modal fade" id="modal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalTitle1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="ModalTitle1">Crear Cuenta</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="formulario">
+                   <div class="formularioInput">
+                      <p id="formularioNombreT" class="header__formulario">Ingrese su nombre:</p>
+                      <input type="text" id="formularioNombre">
+                    </div>
+                    <div class="formularioInput">
+                      <p id="formularioApellidoT" class="header__formulario">Ingrese su apellido:</p>
+                      <input type="text" id="formularioApellido">
+                    </div>
+                    <div class="formularioInput">
+                      <p id="formularioEdadT" class="header__formulario">Ingrese su edad:</p>
+                      <input type="number" id="formularioEdad">
+                    </div>
+                   <div class="formularioInput">
+                      <p id="formularioTelefonoT" class="header__formulario">Ingrese su teléfono:</p>
+                      <input type="number" id="formularioTelefono">
+                    </div>
+                    <div class="formularioInput">
+                      <p id="formularioMailT" class="header__formulario">Ingrese su mail:</p>
+                      <input type="text" id="formularioMail">
+                    </div>
+                    <div class="formularioInput">
+                      <p id="formularioPasswordT" class="header__formulario">Elija una contraseña:</p>
+                      <input type="password" id="formularioPassword">
+                    </div>
+                    <div class="formularioInput">
+                      <p id="formularioPassword2T"class="header__formulario">Repita su contraseña:</p>
+                      <input type="password" id="formularioPassword2">
+                    </div> 
+                    <div class="formularioInput">
+                      <input class="btn btn-primary" type="submit" id="formularioEnviar" value="CREAR CUENTA">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+          <!-- Button trigger modal -->
+          <button type="button" class="btn header__btn--iniciarSesion" data-bs-toggle="modal" data-bs-target="#modal2">Iniciar Sesión</button>
+          <!-- Modal -->
+          <div class="modal fade" id="modal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel2">Iniciar Sesión</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="formularioInput">
+                    <p id="inicioMailT" class="header__formulario">Ingrese su usuario (mail):</p>
+                    <input type="text" id="inicioMail">
+                  </div>
+                  <div class="formularioInput">
+                    <p id="inicioPasswordT" class="header__formulario">Ingrese su contraseña:</p>
+                    <input type="password" id="inicioPassword">
+                  </div>
+                  <div class="formularioInput">
+                    <input class="btn btn-primary" type="submit" id="inicioEnviar" value="INICIAR SESIÓN">
+                  </div>
+                  <div id="catalogo" class="form">
+                    <a href="LISTAC95.pdf" download target="_blank">Descargue el catálogo</a>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <img src="imagenes/icon_arrow.png" class="img-fluid header__logoFlecha">
         </div>
       </div>
 
@@ -101,42 +185,31 @@
       <div class="mainProductos__div_categoria">
 
         <!-- Producto 1 -->
-        <a style="cursor:pointer"  onclick='fProducto1()' class="mainProductos__div_categoria-1">
+        <a style="cursor:pointer"  id="producto1" class="mainProductos__div_categoria-1">
           <div class="mainProductos__div_categoria--desaparecer">
-            <p id="producto1" class="mainProductos__p"></p>
+            <p id="producto1Texto" class="mainProductos__p"></p>
           </div>    
         </a>
 
         <!-- Producto 2 -->
-        <a style="cursor:pointer"  onclick='fProducto2()' class="mainProductos__div_categoria-2">
+        <a style="cursor:pointer"  id="producto2" class="mainProductos__div_categoria-2">
           <div class="mainProductos__div_categoria--desaparecer">
-            <p id="producto2" class="mainProductos__p"></p>
+            <p id="producto2Texto" class="mainProductos__p"></p>
           </div>        
         </a>
 
         <!-- Producto 3 -->
-        <a style="cursor:pointer" onclick='fProducto3()' class="mainProductos__div_categoria-3">
+        <a style="cursor:pointer" id="producto3" class="mainProductos__div_categoria-3">
           <div class="mainProductos__div_categoria--desaparecer">
-            <p id="producto3" class="mainProductos__p"></p>
+            <p id="producto3Texto" class="mainProductos__p"></p>
           </div>        
         </a>
 
-      <button style="cursor:pointer" class="botontotal" onclick='total()'> TOTAL </button>
+      <button style="cursor:pointer" class="botontotal" id="total"> TOTAL </button>
               </div>
-      <div id="carrito"></div>
-
-      <div>
-      <p class="form"> INGRESE SU CONTRASENA PARA ACCEDER A NUESTRO CATALOGO DE PRECIOS </P>  
-      <input class="botonForm" id="password">
-      <button class="botonForm"type="button" onclick="catPrecios()">Ingresar</button>
+      <div id="carrito">
+        <div id="carritoDiv"></div>
       </div>
-
-      <div id="catalogo" class="form">
-      <a href="LISTAC95.pdf" download target="_blank">Descargue el catalogo</a>
-
-      </div>
-
-
     </main>
 
     <footer>
@@ -148,7 +221,6 @@
             <li><a href="#" class="footer__nav--activo">Productos</a></li>
             <li><a href="#">Quiénes Somos</a></li>
             <li><a href="#">Contacto</a></li>
-            <li><a href="#">Catalogo de precios</a></li>
         </ul>
       </div>
 

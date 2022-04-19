@@ -38,8 +38,64 @@
     }
 }
 
+.header__btn--crearCuenta{
+    height: 20px;
+    color: $color_fuente_blanco;
+    line-height: 1.1;
+    font-family: $tipografia;
+    font-weight: bold;
+    font-size: $tipografia_h8;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;  
+    margin-top: 5px;
+}
+
+.header__btn--iniciarSesion{
+    margin-left: 20px;
+    height: 20px;
+    color: $color_fuente_blanco;
+    line-height: 1.1;
+    font-family: $tipografia;
+    font-weight: bold;
+    font-size: $tipografia_h8;
+    text-align: right;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 4px;
+}
+
+.modal-backdrop {
+    position:relative;
+    z-index: -1;
+}
+
+.modal{
+    background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+
+.header__logoFlecha{
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
 .header__logoIndex2{
     height: 90px;
+}
+
+
+.formularioInput{
+    width: 95%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    justify-content: start;
+    align-items: center;
+    padding: 0;
+    margin-top: 25px;
 }
 
 

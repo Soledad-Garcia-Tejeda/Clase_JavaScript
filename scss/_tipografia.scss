@@ -88,6 +88,15 @@ h6{
     font-weight: bolder;
 }
 
+.header__formulario{
+    text-decoration: none;
+    display: inline-block;
+    color:$color_fuente_oscuro ;
+    font-family: $tipografia;
+    font-size: $tipografia_h6;
+    margin: 0;
+    padding: 0;
+}
 
 /* Productos_Main */
 
