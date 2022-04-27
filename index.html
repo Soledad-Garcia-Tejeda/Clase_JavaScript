@@ -180,36 +180,58 @@
 
     <!-- Galería Catálogo de Productos -->
     <main class="mainProductos">
+
       <hr>
+
       <h1 class="mainProductos__titulo">Nuestros productos</h1>
-      <div class="mainProductos__div_categoria">
 
-        <!-- Producto 1 -->
-        <a style="cursor:pointer"  id="producto1" class="mainProductos__div_categoria-1">
-          <div class="mainProductos__div_categoria--desaparecer">
-            <p id="producto1Texto" class="mainProductos__p"></p>
-          </div>    
-        </a>
-
-        <!-- Producto 2 -->
-        <a style="cursor:pointer"  id="producto2" class="mainProductos__div_categoria-2">
-          <div class="mainProductos__div_categoria--desaparecer">
-            <p id="producto2Texto" class="mainProductos__p"></p>
-          </div>        
-        </a>
-
-        <!-- Producto 3 -->
-        <a style="cursor:pointer" id="producto3" class="mainProductos__div_categoria-3">
-          <div class="mainProductos__div_categoria--desaparecer">
-            <p id="producto3Texto" class="mainProductos__p"></p>
-          </div>        
-        </a>
-
-      <button style="cursor:pointer" class="botontotal" id="total"> TOTAL </button>
-              </div>
-      <div id="carrito">
-        <div id="carritoDiv"></div>
+      <div class="mainProductos__div--carrito">
+        <a class="btn mainProductos__btn--carrito" data-bs-toggle="modal" data-bs-target="#modalCarrito"  role="button" id="btnCarrito"></a>
       </div>
+
+
+      <div id="productos" class="mainProductos__div_categoria"></div>
+
+
+      <!-- Modal comprar -->
+      <div class="modal fade" id="modalComprar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalComprarTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalComprarTitle"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalContenedor">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+       </div>
+
+
+      <!-- Modal carrito -->
+      <div class="modal fade" id="modalCarrito" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCarritoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalCarritoTitle">Carrito de compra:</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalContenedorCarrito">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+       </div>
+
+
+
     </main>
 
     <footer>
@@ -248,7 +270,8 @@
     </footer>
    
     
-    <script src="index.js"></script>
+    <script src="/js/stockProductos.js"></script>
+    <script src="/js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>

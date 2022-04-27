@@ -274,6 +274,20 @@ hr {
   width: 90%;
   align-self: center; }
 
+.mainProductos__div--carrito {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0; }
+
+.mainProductos__btn--carrito {
+  width: 50px;
+  height: 50px;
+  background-image: url(/imagenes/carrito.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
+
 .mainProductos__div_categoria {
   width: 90%;
   height: 90%;
