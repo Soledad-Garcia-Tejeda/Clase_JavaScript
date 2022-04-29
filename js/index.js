@@ -12,8 +12,6 @@ let carritoDeCompras = []
 let comprarProducto = []
 
 
-
-
 //CARRITO VACÍO
 modalContenedorCarrito.innerHTML = 
 `<p>No se agregaron productos al carrito</p>`;
@@ -57,26 +55,16 @@ function Productos (array){
                 //EVENTO CLICK_COMPRAR DENTRO DEL MODAL
                 document.querySelector("#btnComprar").addEventListener("click", () => {
                     
-                    //SI LAS UNIDADES A COMPRAR SUPERAN AL STOCK
-                    if (compraCantidad>element.unidadesStock){
-                        alert("Lo sentimos, no tenemos la cantidad solicitada. \n Por favor, ingrese una cantidad menor.");
-                        
-                    //SI LAS UNIDADES A COMPRAR NO SUPERAN AL STOCK
-                    }else{
+                //SI LAS UNIDADES A COMPRAR SUPERAN o NO AL STOCK
+                    //CON OPERADOR TERNARIO
+                compraCantidad>element.unidadesStock ? alert("Lo sentimos, no tenemos la cantidad solicitada. \n Por favor, ingrese una cantidad menor."):element.compraCantidad= parseInt(document.querySelector(`#compraCantidad${element.id}`).value);
 
-                        element.compraCantidad= parseInt(document.querySelector(`#compraCantidad${element.id}`).value);
-
-                        //SI LA COMPRA ES MAYORISTA
-                        if (element.compraCantidad>=element.cantidadMayorista){
-                            element.precioTotal=(element.precioMayorista*element.compraCantidad);
-                         
-                        //SI LA COMPRA ES MINORISTA
-                        }else{
-                            element.precioTotal=(element.precioMinorista*element.compraCantidad);
-                          
-                        }                    
-                        agregarCarrito(element.id);
-                    }
+                //SI LA COMPRA ES MAYORISTA
+                    //CON OPERADOR TERNARIO
+                element.compraCantidad>=element.cantidadMayorista ? element.precioTotal=(element.precioMayorista*element.compraCantidad):element.precioTotal=(element.precioMinorista*element.compraCantidad);              
+                
+                agregarCarrito(element.id);
+                    
                 })            
 
             //SI NO HAY STOCK
@@ -95,11 +83,12 @@ function Productos (array){
 function agregarCarrito(id){
     comprarProducto = stockProductos.find(element => element.id == id);
 
-    carritoDeCompras.push(comprarProducto);
-  
+    carritoDeCompras.push(comprarProducto)
+
+    localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
+    localStorage.getItem("carrito");
  
     console.log(carritoDeCompras); 
-
 
     mostrarCarrito(comprarProducto); 
 
@@ -108,21 +97,19 @@ function agregarCarrito(id){
 
 
 //FUNCIÓN PARA MOSTRAR EL CARRITO
- function mostrarCarrito (array){
+function mostrarCarrito (array){
+
   
-    document.querySelector("#btnCarrito").addEventListener("click", ()=>{
-        document.querySelector("#modalContenedorCarrito p").innerText = 
-        "PRODUCTOS SELECCIONADOS"
+        document.querySelector("#btnCarrito").addEventListener("click", ()=>{
+                document.querySelector("#modalContenedorCarrito p").innerText = 
+                "PRODUCTOS SELECCIONADOS"
 
-        let div2 = document.createElement("div");
-        div2.innerHTML = `<p>${array.compraCantidad} unidades de ${array.nombre} = $${array.precioTotal}</p>`
-        modalContenedorCarrito.appendChild(div2);
-
-      
-    
-    })
-}
-
+                let div2 = document.createElement("div");
+                div2.innerHTML = `${array.compraCantidad} unidades de ${array.nombre} = $${array.precioTotal}`
+                modalContenedorCarrito.appendChild(div2);
+            
+        }
+        )}
 
 
 
@@ -138,7 +125,7 @@ document.querySelector("#formularioEnviar").addEventListener("click", () => {
             alert("Usted debe llenar todos los campos");
         } 
 
-        if (document.querySelector("#formularioEdad").value < 18)  {
+        if  (document.querySelector("#formularioEdad").value < 18)  {
             event.preventDefault();
             alert("Usted debe ser mayor de edad para crear una cuenta");
         } 
@@ -149,32 +136,23 @@ document.querySelector("#formularioEnviar").addEventListener("click", () => {
         }   
 
 
-        //ERRORES EN ROJO CHEQUEO CAMPOS LLENOS && MAYORÍA DE EDAD && CONTRASEÑA
+        //ERRORES EN ROJO CHEQUEO CAMPOS LLENOS && MAYORÍA DE EDAD && CONTRASEÑA 
+            //CON OPERADOR LOGICO AND
 
-        if (document.querySelector("#formularioNombre").value.length<1) {
-            document.querySelector("#formularioNombreT").style.color="red";
-        } 
-        if (document.querySelector("#formularioApellido").value.length<1) {
-            document.querySelector("#formularioApellidoT").style.color="red";
-        }
-        if (document.querySelector("#formularioEdad").value.length<1) {
-            document.querySelector("#formularioEdadT").style.color="red";
-        }
-        if (document.querySelector("#formularioTelefono").value.length<1) {
-            document.querySelector("#formularioTelefonoT").style.color="red";
-        } 
-        if (document.querySelector("#formularioMail").value.length<1) {
-            document.querySelector("#formularioMailT").style.color="red";
-        }
-        if (document.querySelector("#formularioPassword").value.length<1) {
-            document.querySelector("#formularioPasswordT").style.color="red";
-        }
-        if (document.querySelector("#formularioPassword2").value.length<1) {
-            document.querySelector("#formularioPassword2T").style.color="red";
-        } 
-        if (document.querySelector("#formularioEdad").value < 18) {
-            document.querySelector("#formularioEdadT").style.color="red";
-        }
+        document.querySelector("#formularioNombre").value.length<1 && (document.querySelector("#formularioNombreT").style.color="red"); 
+
+        document.querySelector("#formularioApellido").value.length<1 && (document.querySelector("#formularioApellidoT").style.color="red");
+        
+        document.querySelector("#formularioTelefono").value.length<1 && (document.querySelector("#formularioTelefonoT").style.color="red");
+        
+        document.querySelector("#formularioMail").value.length<1 && (document.querySelector("#formularioMailT").style.color="red");
+        
+        document.querySelector("#formularioPassword").value.length<1 && (document.querySelector("#formularioPasswordT").style.color="red");
+        
+        document.querySelector("#formularioPassword2").value.length<1 && (document.querySelector("#formularioPassword2T").style.color="red");
+            
+        document.querySelector("#formularioEdad").value < 18 && (document.querySelector("#formularioEdadT").style.color="red");
+        
         if (document.querySelector("#formularioPassword").value !== document.querySelector("#formularioPassword2").value || document.querySelector("#formularioPassword").value.toString().charAt(0) !== document.querySelector("#formularioPassword").value.toString().charAt(0).toUpperCase() || document.querySelector("#formularioPassword").value.lenght<8){
             document.querySelector("#formularioPasswordT").style.color = "red";
             document.querySelector("#formularioPassword2T").style.color = "red";
@@ -192,28 +170,19 @@ document.querySelector("#inicioEnviar").addEventListener("click", () => {
 
     let usuario = document.getElementById("inicioMail").value;
         
-    if (usuario == "sanitar@hotmail.com") {
-        document.getElementById("catalogo").style.display = ''; 
-        } else {
-      alert("Usuario no registrado");
-    }
+    usuario == "sanitar@hotmail.com" ? document.getElementById("catalogo").style.display = '': alert("Usuario no registrado");
+    
 
-    if (usuario != "sanitar@hotmail.com") {
-        document.getElementById("inicioMailT").style.color="red";
-    }
-
+    usuario != "sanitar@hotmail.com" && (document.getElementById("inicioMailT").style.color="red");
+    
     let password = document.getElementById("inicioPassword").value;
         
-    if (password == "sanitar") {
-        document.getElementById("catalogo").style.display = ''; 
-        } else {
-      alert("Contraseña incorrecta");
-    }
-
-    if (password != "sanitar") {
-        document.getElementById("inicioPasswordT").style.color="red";
-    }
+    password == "sanitar" ? document.getElementById("catalogo").style.display = '': alert("Contraseña incorrecta");
+    
+    password != "sanitar" && (document.getElementById("inicioPasswordT").style.color="red");
+    
 })
+
 
 
 
