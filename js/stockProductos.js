@@ -33,7 +33,7 @@ const producto12 = new Producto(12, "BOTONES PARA DEPÓSITO PARED Y MOCHILA", "a
 
 let stockProductos=[producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12]
 
-console.log(stockProductos)
+
 
 
 

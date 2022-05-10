@@ -154,6 +154,127 @@ a {
   margin-top: 30px;
   text-align: center; }
 
+.mainProductos__carrito {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  margin-left: 2px; }
+
+.mainProductos__detalle-titulo {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-bottom: 30px; }
+
+.mainProductos__detalle-p {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px; }
+
+.mainProductos__detalle-p-color {
+  color: #259cbe;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold; }
+
+.mainProductos__detalle-p-chico {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin: 0px; }
+
+.carritoDeCompras_titulo {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 30px;
+  text-align: center; }
+
+.carritoDeCompras_vacio {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-top: 30px;
+  text-align: center; }
+
+.mainProductos__carrito-nombre {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  grid-area: nombre;
+  margin: 0; }
+
+.mainProductos__carrito-und {
+  color: #259cbe;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  grid-area: unidades;
+  margin: 0; }
+
+.mainProductos__carrito-precio {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  grid-area: precio;
+  font-weight: bold;
+  margin: 0; }
+
+.mainProductos__carrito-total {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+  text-align: center; }
+
+.mainProductos__carrito-inciarCompra {
+  color: #259cbe;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  margin-top: 20px;
+  border: thin solid; }
+
+.mainProductos__carrito-formulario {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 0; }
+
+.mainProductos__carrito-inciarSesion {
+  color: #259cbe;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  margin-top: 40px;
+  border-top: 2px solid; }
+
+.mainProductos__carrito-crearCuenta {
+  color: #363636;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+  margin-top: 10px; }
+
 /* Footer */
 .footer__p--claro {
   text-decoration: none;
@@ -274,6 +395,13 @@ hr {
   width: 90%;
   align-self: center; }
 
+.hr2 {
+  background-color: black;
+  color: black;
+  height: 12px;
+  width: 100%;
+  align-self: center; }
+
 .mainProductos__div--carrito {
   width: 90%;
   display: flex;
@@ -284,6 +412,14 @@ hr {
   width: 50px;
   height: 50px;
   background-image: url(/imagenes/carrito.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.mainProductos__btn--eliminar {
+  width: 30px;
+  height: 30px;
+  background-image: url(/imagenes/btnEliminar.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center; }
@@ -300,6 +436,78 @@ hr {
   padding: 40px 0;
   overflow: hidden;
   justify-items: center; }
+
+.mainProductos__div_detalle1 {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 30px; }
+
+.mainProductos__div_detalle {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-areas: "foto detalle";
+  grid-template-columns: 60% 40%;
+  grid-column-gap: 10px; }
+
+.mainProductos__div_div-detalle {
+  grid-area: detalle;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start; }
+
+.mainProductos__div_div-img {
+  width: 90%;
+  grid-area: foto;
+  display: flex;
+  flex-direction: column;
+  align-content: center; }
+
+.mainProductos__div_input {
+  width: 100%;
+  margin-bottom: 15px; }
+
+.carritoVacio {
+  border: 2px solid;
+  border-color: #259cbe;
+  padding: 5px; }
+
+.mainProductos__div_carrito {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-areas: "nombre unidades precio eliminar";
+  grid-template-columns: 50% 16% 16% 16%;
+  grid-column-gap: 10px;
+  margin-bottom: 20px; }
+
+.mainProductos__div_carritoTotal {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+
+.mainProductos__div_carrito-formulario-div {
+  width: 95%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 10px;
+  justify-content: start;
+  align-items: center;
+  padding: 0;
+  margin-top: 35px; }
+
+.mainProductos__div_carrito-formulario {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
 
 .mainProductos__div_categoria-1 {
   width: 200px;

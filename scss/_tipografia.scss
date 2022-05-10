@@ -128,7 +128,146 @@ a{
     text-align: center;
 }
 
- 
+.mainProductos__carrito{
+    color: black;
+    font-family: $tipografia;
+    font-size: $tipografia_h2;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    margin-left: 2px;
+}
+
+.mainProductos__detalle-titulo{
+    color:$color_fuente_oscuro;
+    font-family: $tipografia;
+    font-size: $tipografia_h5;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.mainProductos__detalle-p{
+    color:$color_fuente_oscuro ;
+    font-family: $tipografia;
+    font-size: $tipografia_h6;
+}
+
+.mainProductos__detalle-p-color{
+    color:$color_celeste;
+    font-family: $tipografia;
+    font-size: $tipografia_h6;
+    font-weight: bold;
+}
+
+.mainProductos__detalle-p-chico{
+    color:$color_fuente_oscuro ;
+    font-family: $tipografia;
+    font-size: $tipografia_h7;
+    margin: 0px;
+}
+
+.carritoDeCompras_titulo{
+    color: $color_fuente_oscuro ;
+    font-family: $tipografia;
+    font-size: $tipografia_h5;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.carritoDeCompras_vacio{
+    color: $color_fuente_oscuro ;
+    font-family: $tipografia;
+    font-size: $tipografia_h7;
+    text-transform: uppercase;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.mainProductos__carrito-nombre{
+    color:$color_fuente_oscuro ;
+    font-family: $tipografia;
+    font-size: $tipografia_h8;
+    grid-area:nombre;
+    margin: 0;
+}
+
+.mainProductos__carrito-und{
+    color:$color_celeste ;
+    font-family: $tipografia;
+    font-size: $tipografia_h7;
+    grid-area:unidades;
+    margin: 0;
+}
+
+.mainProductos__carrito-precio{
+    color:$color_fuente_oscuro ;
+    font-family: $tipografia;
+    font-size: $tipografia_h7;
+    grid-area:precio;
+    font-weight: bold;
+    margin: 0;
+}
+
+.mainProductos__carrito-total{
+    color:$color_fuente_oscuro ;
+    font-family: $tipografia;
+    font-size: $tipografia_h5;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.mainProductos__carrito-inciarCompra{
+    color:$color_celeste ;
+    font-family: $tipografia;
+    font-size: $tipografia_h6;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    margin-top: 20px;
+    border: thin solid;
+}
+
+.mainProductos__carrito-formulario{
+    color:$color_fuente_oscuro ;
+    font-family: $tipografia;
+    font-size: $tipografia_h8;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.mainProductos__carrito-inciarSesion{
+    color:$color_celeste ;
+    font-family: $tipografia;
+    font-size: $tipografia_h6;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 2px solid;
+}
+
+.mainProductos__carrito-crearCuenta{
+    color:$color_fuente_oscuro ;
+    font-family: $tipografia;
+    font-size: $tipografia_h8;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+
+
 /* Footer */
 
 .footer__p--claro{

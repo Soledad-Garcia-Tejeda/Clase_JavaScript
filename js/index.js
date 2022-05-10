@@ -1,201 +1,323 @@
 //CONTENEDORES DEL HTML
 const productos = document.getElementById("productos");
-
-const modalContenedor= document.getElementById("modalContenedor");
-
-const modalContenedorCarrito= document.getElementById("modalContenedorCarrito");
+const productoDetalle = document.getElementById("productoDetalle");
+const carritoBody= document.getElementById("carritoBody");
+let div=document.createElement("div");
 
 
 //ARRAY CARRITO DE COMPRAS
+let comprarProducto = []
 let carritoDeCompras = []
 
-let comprarProducto = []
+
+//VARIABLES GLOBALES
+let btnEliminar;
+let totalAPagar;
+let btnComprar;
+let unidades;
+let baseDeUsuarios;
+
+
 
 
 //CARRITO VACÍO
-modalContenedorCarrito.innerHTML = 
-`<p>No se agregaron productos al carrito</p>`;
+carritoBody.innerHTML = 
+`<p id="carritoVacio" class="carritoDeCompras_vacio carritoVacio">El carrito de compras está vacío</p>`;
+
+
+mostrarProductos(stockProductos);
+btnComprarProducto (stockProductos);
 
 
 
 
-//SELECCIONAR PRODUCTOS Y CANTIDADES A COMPRAR
-Productos(stockProductos);
 
-function Productos (array){
-    array.forEach(element => {
+//IMPRIMIR EL MAIN PRODUCTOS
+function mostrarProductos (array){
+    array.forEach(e => {
         let div = document.createElement("div");
-        div.className = `mainProductos__div_categoria-${element.id}` 
+        div.className = `mainProductos__div_categoria-${e.id}`;
+        div.setAttribute ("id",`comprarProducto${e.id}`);
         div.innerHTML += 
-        `<a id="comprarProducto${element.id}"  type="button" data-bs-toggle="modal" data-bs-target="#modalComprar"  style="cursor:pointer">
-            <div class="mainProductos__div_categoria--desaparecer">
-                <p class="mainProductos__p">${element.nombre}</p>
-            </div>    
-        </a>`
+        `<div type="button" style="cursor:pointer" class="mainProductos__div_categoria--desaparecer">
+            <p class="mainProductos__p">${e.nombre}</p>
+        </div>`
         
         productos.appendChild(div);
+    })
+}
 
-        //EVENTO CLICK_COMPRAR PRODUCTO
-        document.getElementById(`comprarProducto${element.id}`).addEventListener("click",()=>{
-            document.querySelector("#modalComprarTitle").innerHTML=`${element.nombre}`
-           
-            //SI HAY STOCK
-            if (element.unidadesStock > 0) {
 
-                //PEDIR CANTIDAD QUE SE QUIERE COMPRAR A TRAVÉS DE UN MODAL
-                modalContenedor.innerHTML=
-                `<p> El precio por unidad de ${element.nombre} es de $${element.precioMinorista}. <br> Para acceder a un descuento mayorista del ${descuentoMayorista*100}%, debe comprar un mínimo de ${element.cantidadMayorista} unidades. <br> ¿Cuántas unidades quiere comprar?</p>
+
+//ACCEDER AL DETALLE DE CADA PRODUCTO
+function btnComprarProducto (array){
+    array.forEach(e=>{
+        document.querySelector(`#comprarProducto${e.id}`).addEventListener("click", ()=>{
+            //OCULTAR EL MAIN DE PRODUCTOS
+            productos.style.display="none";
             
-                    <input type="number" id="compraCantidad${element.id}">
-                    <input class="btn btn-primary" id="btnComprar" data-bs-dismiss="modal" value="COMPRAR">
-                `
+            div.className = `mainProductos__div_detalle`;
 
-                let compraCantidad= document.querySelector(`#compraCantidad${element.id}`).value;
+            //MOSTRAR DETALLE DEL PRODUCTO_OPCIÓN 1: SI NO HAY STOCK
+            if (e.unidadesStock==0){
+            div.innerHTML = 
+            `<img src="/imagenes/productos-${e.id}.png" class="mainProductos__div_div-img">         
+            <div class="mainProductos__div_div-detalle">
+                <h2 class="mainProductos__detalle-titulo"><strong>PRODUCTO:</strong> ${e.nombre}</h2>
+                <p class="mainProductos__detalle-p"><strong>SIN STOCK</strong></p>          
+                <button type="button" id="btnVolver" class="btn btn-secondary mt-3">VOLVER</button>
+            </div>
+            `
 
-                //EVENTO CLICK_COMPRAR DENTRO DEL MODAL
-                document.querySelector("#btnComprar").addEventListener("click", () => {
-                    
-                //SI LAS UNIDADES A COMPRAR SUPERAN o NO AL STOCK
-                    //CON OPERADOR TERNARIO
-                compraCantidad>element.unidadesStock ? alert("Lo sentimos, no tenemos la cantidad solicitada. \n Por favor, ingrese una cantidad menor."):element.compraCantidad= parseInt(document.querySelector(`#compraCantidad${element.id}`).value);
+            productoDetalle.style.display="flex";
+            productoDetalle.appendChild(div);
+            //BOTÓN PARA VOLVER AL MAIN DE PRODUCTOS
+            volver();
 
-                //SI LA COMPRA ES MAYORISTA
-                    //CON OPERADOR TERNARIO
-                element.compraCantidad>=element.cantidadMayorista ? element.precioTotal=(element.precioMayorista*element.compraCantidad):element.precioTotal=(element.precioMinorista*element.compraCantidad);              
-                
-                agregarCarrito(element.id);
-                    
-                })            
-
-            //SI NO HAY STOCK
             }else{
-                modalContenedor.innerHTML=
-                "<p> Lo sentimos, el producto está fuera de Stock</p>"              
-            }
+                //MOSTRAR DETALLE DEL PRODUCTO_OPCIÓN 2: SI HAY STOCK
+                div.innerHTML = 
+                ` <img src="/imagenes/productos-${e.id}.png" class="mainProductos__div_div-img">         
+                <div class="mainProductos__div_div-detalle">
+                    <h2 class="mainProductos__detalle-titulo"><strong>PRODUCTO:</strong> ${e.nombre}</h2>
+                    <p class="mainProductos__detalle-p">Precio unitario: $${e.precioMinorista}</p>
+                    <p class="mainProductos__detalle-p-color">Descuento mayorista: ${descuentoMayorista*100}% </p>
+                    <p class="mainProductos__detalle-p">Para acceder al descuento mayorista se tiene que comprar un mínimo de <strong>${e.cantidadMayorista} unidades</strong>. </p>
+                    
+                    <p class="mainProductos__detalle-p-chico">Cantidad:</p>
+                    <input class="mainProductos__div_input"  pattern="^[0-9]"  min="1" step="1" type="number" id="compraCantidad${e.id}">
+                                 
+                    <button type="button" id="btnComprar${e.id}" class="btn btn-primary mt-3">COMPRAR</button>
+                    <button type="button" id="btnVolver" class="btn btn-secondary mt-3">VOLVER</button>
+                </div>
+                `
+    
+                productoDetalle.style.display="flex";
+                productoDetalle.appendChild(div);
+                //BOTÓN PARA VOLVER AL MAIN DE PRODUCTOS
+                volver();
+           
+
+                //BOTÓN DE COMPRAR
+                btnComprar= document.querySelector(`#btnComprar${e.id}`)
+                btnComprar.addEventListener("click", ()=>{
+                    //CAPTURAR EL VALOR DE LAS UNIDADES QUE SE QUIEREN COMPRAR
+                    unidades = document.querySelector(`#compraCantidad${e.id}`).value;
+
+                    //SI LAS UNIDADES A COMPRAR SUPERAN AL STOCK
+                    if (unidades>e.unidadesStock){
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Stock insuficiente',
+                            text: `Vuelva a realizar su compra por una cantidad menor a ${e.unidadesStock} unidades.`,
+                        })
+        
+                    }else{
+                        //SI LAS UNIDADES A COMPRAR NO SUPERAN AL STOCK
+
+                        //INCORPORAR EL VALOR DE LAS UNIDADES QUE SE QUIEREN COMPRAR
+                        e.compraCantidad+= parseInt(unidades);
+        
+                        //SI LA COMPRA ES MAYORISTA O MINORISTA
+                        e.compraCantidad>=e.cantidadMayorista ? e.precioTotal=(e.precioMayorista*e.compraCantidad):e.precioTotal=(e.precioMinorista*e.compraCantidad); 
+
+                        //FUNCIÓN PARA AGREGAR EL PRODUCTO SELECCIONADO AL CARRITO
+                        agregarCarrito(e.id);   
+                    }                    
+                })                         
+            }           
         })
-    });
+    })    
+}
+
+
+                  
+
+
+
+//FUNCIÓN PARA ACTIVAR EL BOTÓN PARA VOLVER AL MAIN DE PRODUCTOS
+function volver(){
+    document.querySelector("#btnVolver").addEventListener("click", ()=>{
+        productoDetalle.style.display="none";
+        productos.style.display="grid";
+    })
 }
 
 
 
 
-//CARRITO
-function agregarCarrito(id){
-    comprarProducto = stockProductos.find(element => element.id == id);
+//FUNCIÓN PARA AGREGAR AL CARRITO
+function agregarCarrito(id) {
+    //BUSCAR LOS PRODUCTOS SELECCIONADOS PARA COMPRAR
+    comprarProducto = stockProductos.find(e => e.id == id);
 
-    carritoDeCompras.push(comprarProducto)
+    //AGREGAR LOS PRODUCTOS SELECCIONADOS AL ARRAY DE CARRITO DE COMPRAS
+    carritoDeCompras.push(comprarProducto);
 
-    localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
-    localStorage.getItem("carrito");
+    //ELIMINAR LOS PRODUCTOS REPETIDOS
+    carritoDeCompras = carritoDeCompras.filter((item, index) => {
+        return carritoDeCompras.indexOf(item) === index;
+    })
  
-    console.log(carritoDeCompras); 
 
-    mostrarCarrito(comprarProducto); 
+    mostrarCarrito ();  
+    contadorCarrito(carritoDeCompras)
 
 }
 
 
-
-//FUNCIÓN PARA MOSTRAR EL CARRITO
-function mostrarCarrito (array){
-
-  
-        document.querySelector("#btnCarrito").addEventListener("click", ()=>{
-                document.querySelector("#modalContenedorCarrito p").innerText = 
-                "PRODUCTOS SELECCIONADOS"
-
-                let div2 = document.createElement("div");
-                div2.innerHTML = `${array.compraCantidad} unidades de ${array.nombre} = $${array.precioTotal}`
-                modalContenedorCarrito.appendChild(div2);
-            
-        }
-        )}
+//FUNCIÓN PARA IMPRIMIR EL NÚMERO DE CANTIDADES DE PRODUCTOS QUE SE ESTÁN INCORPRANDO AL CARRITO
+function contadorCarrito(array){
+    let cantidadesTotales= array.reduce((ac,e)=>ac+e.compraCantidad,0);
+    document.querySelector("#cantidadesCarrito").innerText=cantidadesTotales;
+}
 
 
 
-//CREAR CUENTA
+//FUNCIÓN PARA IMPRIMIR EL CARRITO DE COMPRAS
+function mostrarCarrito (){
+    //LIMPIAR LO ESCRITO AL PRINCIPIO DE "CARRITO VACÍO"
+    carritoBody.innerHTML=""
 
-document.querySelector("#formularioEnviar").addEventListener("click", () => {
-    document.querySelector("#formulario").addEventListener("submit", (event) => {
+    //IMPRIMIR EL DETALLE DE CADA PRODUCTO INCORPORADO AL CARRITO   
+    carritoDeCompras.forEach(e=>{
+    
+        let compra=document.createElement("div");
+        compra.setAttribute ("id",`compra${e.id}`);
+        compra.innerHTML=
+        `
+        <div class="mainProductos__div_carrito">
+            <p class="mainProductos__carrito-nombre">${e.nombre}</p>
+            <p class="mainProductos__carrito-und">Und:${e.compraCantidad}</p>
+            <p class="mainProductos__carrito-precio">$${e.precioTotal}</p>
+            <a class="btn mainProductos__btn--eliminar" type="button"  id="btnEliminar${e.id}"></a>
+        </div>
+        `
+        carritoBody.appendChild(compra);
 
-        //ALERT CHEQUEO CAMPOS LLENOS && MAYORÍA DE EDAD && CONTRASEÑA
-        
-        if (document.querySelector("#formularioNombre").value.length<1 || document.querySelector("#formularioApellido").value.length<1 || document.querySelector("#formularioEdad").value.length<1|| document.querySelector("#formularioTelefono").value.length<1 || document.querySelector("#formularioMail").value.length<1 || document.querySelector("#formularioPassword").value.length<1 || document.querySelector("#formularioPassword2").value.length<1)  {
-            event.preventDefault();
-            alert("Usted debe llenar todos los campos");
-        } 
+        //ELIMINAR PRODUCTO DEL CARRITO
+        btnEliminar=document.querySelector(`#btnEliminar${e.id}`);
+        eliminarProducto(e.id);                 
+    })
 
-        if  (document.querySelector("#formularioEdad").value < 18)  {
-            event.preventDefault();
-            alert("Usted debe ser mayor de edad para crear una cuenta");
-        } 
+    //IMPRIMIR EL TOTAL DE LA COMPRA
+    let divTotal= document.createElement("div");
+    divTotal.className = `mainProductos__div_carritoTotal`
+    divTotal.innerHTML=
+    `<hr class="hr2">
+    <p  id="totalComprado" class="mainProductos__carrito-total"></p>
+    <a class="btn mainProductos__carrito-inciarCompra" type="button"  id="btnInciarCompra">INICIAR COMPRA</a>`
 
-        if (document.querySelector("#formularioPassword").value == "" || document.querySelector("#formularioPassword").value !== document.querySelector("#formularioPassword2").value  || document.querySelector("#formularioPassword").value.toString().charAt(0) !== document.querySelector("#formularioPassword").value.toString().charAt(0).toUpperCase() || document.querySelector("#formularioPassword").value.lenght<8 )  {
-            event.preventDefault();
-            alert("La contraseñas deben coincidir \nLa contraseña debe comenzar con una letra mayúscula y tener 8 caracteres");
-        }   
+    carritoBody.appendChild(divTotal);
+
+    totalPrecio(carritoDeCompras);
+    inciarCompra()
+} 
 
 
-        //ERRORES EN ROJO CHEQUEO CAMPOS LLENOS && MAYORÍA DE EDAD && CONTRASEÑA 
-            //CON OPERADOR LOGICO AND
 
-        document.querySelector("#formularioNombre").value.length<1 && (document.querySelector("#formularioNombreT").style.color="red"); 
+//FUNCIÓN PARA CALCULAR EL TOTAL DE LA COMPRA
+function totalPrecio(array){
+    totalAPagar= carritoDeCompras.reduce((ac,array)=>ac+array.precioTotal,0);
 
-        document.querySelector("#formularioApellido").value.length<1 && (document.querySelector("#formularioApellidoT").style.color="red");
-        
-        document.querySelector("#formularioTelefono").value.length<1 && (document.querySelector("#formularioTelefonoT").style.color="red");
-        
-        document.querySelector("#formularioMail").value.length<1 && (document.querySelector("#formularioMailT").style.color="red");
-        
-        document.querySelector("#formularioPassword").value.length<1 && (document.querySelector("#formularioPasswordT").style.color="red");
-        
-        document.querySelector("#formularioPassword2").value.length<1 && (document.querySelector("#formularioPassword2T").style.color="red");
-            
-        document.querySelector("#formularioEdad").value < 18 && (document.querySelector("#formularioEdadT").style.color="red");
-        
-        if (document.querySelector("#formularioPassword").value !== document.querySelector("#formularioPassword2").value || document.querySelector("#formularioPassword").value.toString().charAt(0) !== document.querySelector("#formularioPassword").value.toString().charAt(0).toUpperCase() || document.querySelector("#formularioPassword").value.lenght<8){
-            document.querySelector("#formularioPasswordT").style.color = "red";
-            document.querySelector("#formularioPassword2T").style.color = "red";
+    document.querySelector("#totalComprado").innerText=
+    `Total: $${totalAPagar}`
+}
+
+
+//FUNCIÓN PARA BORRAR ALGÚN PRODUCTO DEL CARRITO DE COMPRAS
+function eliminarProducto(id){
+    btnEliminar.addEventListener("click",()=>{
+
+        //MODIFICAR LA CANTIDAD DE UNIDADES DEL PRODUCTO ELIMINADO
+        stockProductos[id-1].compraCantidad=0;
+
+        //SACAR DEL ARRAY DEL CARRITO DE COMPRAS EL PRODUCTO ELIMINADO
+        carritoDeCompras= carritoDeCompras.filter(item=> item.id != id); 
+    
+        //ACTUALIZAR EL CONTADOR DE UNIDADES AGREGADAS AL CARRITO
+        contadorCarrito(carritoDeCompras)
+
+        //BORRAR EL DETALLE DEL PRODUCTO ELIMINADO, DE LA IMPRESIÓN DEL CARRITO 
+        document.querySelector(`#compra${id}`).style.display="none"; 
+
+        //SI EL CARRITO SE QUEDA SIN PRODUCTOS, PONER QUE EL CARRITO ESTÁ VACÍO
+        if (carritoDeCompras.length==0){
+            carritoBody.innerHTML = 
+        `<p id="carritoVacio" class="carritoDeCompras_vacio carritoVacio">El carrito de compras está vacío</p>`;
+
+        }else{
+            //SI EL CARRITO TIENE PRODUCTOS, CALCULAR EL TOTAL
+            totalPrecio(carritoDeCompras);  
         }
     })
-})
+}
 
 
-//INICIO SESIÓN
+//FUNCIÓN PARA LOGUEARSE E INICIAR LA COMPRA
+function inciarCompra(){
+    document.querySelector("#btnInciarCompra").addEventListener("click",()=>{
+        document.querySelector("#offcanvasRightLabel").innerText="INICIAR SESIÓN";
 
-//document.getElementById(catalogo).style.visibility = "visible"; // show
-document.getElementById("catalogo").style.display = 'none'; 
+        //INGRESAR USUARIO Y CONTRASEÑA O CREAR UNA CUENTA PARA REALIZAR LA COMPRA
+        carritoBody.innerHTML =  
+        `<div class="mainProductos__div_carrito-formulario">
+            <div class="mainProductos__div_carrito-formulario-div">
+                <p class="mainProductos__carrito-formulario">Ingrese su usuario:</p>
+                <input  type="text" id="cUsuario">             
+            </div>
+            <div class="mainProductos__div_carrito-formulario-div">
+                <p class="mainProductos__carrito-formulario">Ingrese su contraseña:</p>
+                <input type="password" id="cContrasenia">
+            </div> 
+            <a data-bs-dismiss="offcanvas" class="btn mainProductos__carrito-inciarSesion" type="button"  id="cIniciarSesion">INCIAR SESIÓN</a>
+            <a class="btn mainProductos__carrito-crearCuenta" type="button"  id="cCrearCuenta">CREAR CUENTA</a>           
+        </div>`
 
-document.querySelector("#inicioEnviar").addEventListener("click", () => {
+        //SE USA UNA BASE DE USUARIOS FICTICIA A PARTIR DE UNA API
+        pedirUsuarios ();
 
-    let usuario = document.getElementById("inicioMail").value;
-        
-    usuario == "sanitar@hotmail.com" ? document.getElementById("catalogo").style.display = '': alert("Usuario no registrado");
-    
+        document.querySelector("#cIniciarSesion").addEventListener("click",()=>{
+            //SE TOMA EL VALOR QUE SE DA COMO USUARIO
+            let usuario= document.querySelector("#cUsuario").value;
+            //SE TOMA EL VALOR QUE SE DA COMO CONTRASEÑA
+            let contrasenia= document.querySelector("#cContrasenia").value;
 
-    usuario != "sanitar@hotmail.com" && (document.getElementById("inicioMailT").style.color="red");
-    
-    let password = document.getElementById("inicioPassword").value;
-        
-    password == "sanitar" ? document.getElementById("catalogo").style.display = '': alert("Contraseña incorrecta");
-    
-    password != "sanitar" && (document.getElementById("inicioPasswordT").style.color="red");
-    
-})
+            //SE BUSCA SI LOS VALORES DADOS COMO USUARIO Y CONTRASEÑA ESTÁN EN LA BASE DE DATOS
+            //(SE USA COMO USUARIO EL MAIL Y COMO CONTRASEÑA EL USERNAME, A MODO DE EJEMPLO)
+            let usuarioEsta=baseDeUsuarios.find((e)=>e.email==usuario);
+            let contraseniaEsta=baseDeUsuarios.find((e)=>e.username==contrasenia);
+
+            //SI COINCIDEN EL USUARIO Y CONTRASEÑA
+            if(usuarioEsta && contraseniaEsta){
+                //SE BUSCA EL OBJETO QUE CORRESPONDE AL USUARIO INGRESADO
+                let usuarioIngresado=baseDeUsuarios.filter((e)=>e.email.includes(usuario))
+
+                //SE LE DA LA BIENVENIDA AL USUARIO Y LUEGO SE VA A SEGUIR CON EL RESUMEN DEL CARRITO Y LOS DATOS DE DIRECCIÓN PARA TERMINAR LA COMPRA
+                document.querySelector("#productosTitulo").innerText=`¡Hola ${usuarioIngresado[0].name}!`;
+                productoDetalle.innerHTML="";
+            }else{
+                //SI NO COINCIDEN EL USUARIO Y CONTRASEÑA
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Usuario y contraseña INCORRECTOS',
+                    text: `Por favor, vuelva a ingresar su usuario y contraseña.`,
+                })
+            }
+        })
+    })
+
+}
 
 
 
+//FUNCIÓN PARA LLAMAR A LA BASE DE USUARIOS FICTICIA
+async function pedirUsuarios ()  {
+    const resp = await fetch('https://jsonplaceholder.typicode.com/users')
+    const data = await resp.json()
 
-
-
-
-
-
-
-
-
-
-
+    baseDeUsuarios= data;
+}
 
 
 

@@ -99,6 +99,8 @@
 }
 
 
+
+
 /* Productos_Main*/
 
 hr{
@@ -108,6 +110,15 @@ hr{
     width: 90%;
     align-self: center;
 }
+
+.hr2{
+    background-color: black;
+    color: black;
+    height: 12px;
+    width: 100%;
+    align-self: center;
+}
+
 .mainProductos__div--carrito{
     width: 90%;
     display: flex;
@@ -124,6 +135,16 @@ hr{
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.mainProductos__btn--eliminar{
+    width: 30px;
+    height: 30px;
+    background-image: url(/imagenes/btnEliminar.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 
 
 $ancho:200px;
@@ -142,7 +163,90 @@ $ancho:200px;
     justify-items: center;
 }
 
+.mainProductos__div_detalle1{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-content: center;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+} 
 
+.mainProductos__div_detalle{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    "foto detalle";
+    grid-template-columns: 60% 40%;
+    grid-column-gap: 10px;
+}
+
+.mainProductos__div_div-detalle{
+    grid-area: detalle;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content:flex-start;
+
+}
+
+.mainProductos__div_div-img{
+    width: 90%;
+    grid-area: foto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+} 
+
+.mainProductos__div_input{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.carritoVacio{
+    border: 2px solid;
+    border-color: $color_celeste;
+    padding: 5px; 
+}
+
+.mainProductos__div_carrito{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    "nombre unidades precio eliminar";
+    grid-template-columns: 50% 16% 16% 16%;
+    grid-column-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.mainProductos__div_carritoTotal{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainProductos__div_carrito-formulario-div{
+    width: 95%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 10px;
+    justify-content: start;
+    align-items: center;
+    padding: 0;
+    margin-top: 35px;
+}
+
+.mainProductos__div_carrito-formulario{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
 
 $i2:1;
