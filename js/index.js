@@ -1,8 +1,12 @@
 //CONTENEDORES DEL HTML
 const productos = document.getElementById("productos");
 const productoDetalle = document.getElementById("productoDetalle");
+const productoComprado = document.getElementById("productoComprado");
 const carritoBody= document.getElementById("carritoBody");
+const productosCompradosTitulo= document.getElementById("productosCompradosTitulo");
+productosCompradosTitulo.style.display="none";
 let div=document.createElement("div");
+let div2=document.createElement("div");
 
 
 //ARRAY CARRITO DE COMPRAS
@@ -210,9 +214,13 @@ function mostrarCarrito (){
 
     carritoBody.appendChild(divTotal);
 
+    localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
+
     totalPrecio(carritoDeCompras);
     inciarCompra()
 } 
+
+
 
 
 
@@ -293,9 +301,70 @@ function inciarCompra(){
                 //SE BUSCA EL OBJETO QUE CORRESPONDE AL USUARIO INGRESADO
                 let usuarioIngresado=baseDeUsuarios.filter((e)=>e.email.includes(usuario))
 
-                //SE LE DA LA BIENVENIDA AL USUARIO Y LUEGO SE VA A SEGUIR CON EL RESUMEN DEL CARRITO Y LOS DATOS DE DIRECCIÓN PARA TERMINAR LA COMPRA
+                //SE LE DA LA BIENVENIDA AL USUARIO
                 document.querySelector("#productosTitulo").innerText=`¡Hola ${usuarioIngresado[0].name}!`;
                 productoDetalle.innerHTML="";
+                productosCompradosTitulo.style.display="block";
+
+                // RESUMEN DEL CARRITO 
+               carritoDeCompras.forEach(e=>{
+                div2.setAttribute ("id",`productoSeleccionado${e.id}`);
+                    div2.innerHTML += 
+                    `<div class="mainProductos__div_comprados">
+                        <img src="/imagenes/productos-${e.id}.png" class="mainProductos__div_div-imgC">         
+                        <div class="mainProductos__div_div-detalleC">
+                            <h2 class="mainProductos__detalle-titulo"><strong>PRODUCTO:</strong> ${e.nombre}</h2>
+                            <p class="mainProductos__detalle-p">Unidades compradas: ${e.compraCantidad}</p>
+                        </div>
+                        <div class="mainProductos__div_div-precio">
+                            <h2 class="mainProductos__detalle-p-color">Total: $${e.precioTotal}</h2>
+                        </div>
+                    </div>`
+        
+                    productoComprado.style.display="block";
+                    productoComprado.appendChild(div2);
+                })
+
+                let divTotal2=document.createElement("div");
+                divTotal2.innerHTML=
+                `<hr class="hr2">
+                <h2 class="mainProductos__detalle-titulo2">Total: $${totalAPagar}</h2> 
+                <a class="btn mainProductos__carrito-pagar" type="button"  id="btnPagar">PAGAR</a>`
+
+                productoComprado.appendChild(divTotal2);
+
+                // BOTÓN PAGAR
+                document.querySelector("#btnPagar").addEventListener("click",()=>{
+                    Swal.fire({
+                        title: '¿Estás seguro de pagar esta compra?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: '¡Sí!'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          Swal.fire(
+                            '¡Compra realizada!',
+                            'Gracias por realizar esta compra.',
+                            'success'
+                          )
+
+                           // SE VACÍA EL CARRITO
+                          carritoDeCompras=[];
+                          document.querySelector("#productosTitulo").innerText=`Nuestros productos`;
+                          productosCompradosTitulo.style.display="none";
+                          productoComprado.style.display="none";
+                          productos.style.display="grid";
+                          carritoBody.innerHTML =
+                          `<p id="carritoVacio" class="carritoDeCompras_vacio carritoVacio">El carrito de compras está vacío</p>`;
+                          contadorCarrito(carritoDeCompras)
+
+                        }
+                      })
+                })
+
+
             }else{
                 //SI NO COINCIDEN EL USUARIO Y CONTRASEÑA
                 Swal.fire({

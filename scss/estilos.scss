@@ -203,6 +203,48 @@ $ancho:200px;
     align-content: center;
 } 
 
+
+.mainProductos__div_comprados{
+    width: 100%;
+    height: auto;
+    margin-top: 0px;
+    display: grid;
+    grid-template-areas: 
+    "fotoC detalleC precio";
+    grid-template-columns: 30% 35% 35%;
+    grid-column-gap: 30px;
+    margin-bottom: 10px;
+}
+
+.mainProductos__div_div-imgC{
+    width: 90%;
+    grid-area: fotoC;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+} 
+
+.mainProductos__div_div-detalleC{
+    grid-area: detalleC;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content:flex-start;
+
+}
+
+.mainProductos__div_div-precio{
+    grid-area: precio;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content:flex-start;
+
+}
+
+
 .mainProductos__div_input{
     width: 100%;
     margin-bottom: 15px;

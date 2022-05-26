@@ -128,6 +128,16 @@ a{
     text-align: center;
 }
 
+.mainProductos__titulo2{
+    color: $color_celeste ;
+    font-family: $tipografia;
+    font-size: $tipografia_h4;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 30px;
+    text-align: center;
+}
+
 .mainProductos__carrito{
     color: black;
     font-family: $tipografia;
@@ -144,6 +154,15 @@ a{
     font-family: $tipografia;
     font-size: $tipografia_h5;
     font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.mainProductos__detalle-titulo2{
+    color:$color_fuente_oscuro;
+    font-family: $tipografia;
+    font-size: $tipografia_h5;
+    font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 30px;
 }
@@ -223,6 +242,18 @@ a{
 }
 
 .mainProductos__carrito-inciarCompra{
+    color:$color_celeste ;
+    font-family: $tipografia;
+    font-size: $tipografia_h6;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    margin-top: 20px;
+    border: thin solid;
+}
+
+.mainProductos__carrito-pagar{
     color:$color_celeste ;
     font-family: $tipografia;
     font-size: $tipografia_h6;
